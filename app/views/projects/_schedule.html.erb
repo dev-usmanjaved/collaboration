@@ -1,0 +1,19 @@
+<div class='mb-5'>
+  <% schedule.keys.each do | key|  %>
+      <div class="row border m-0">
+        <div class="col-3 m-auto text-center">
+            <h5 class="text-info"> SPRINT: <%= key %></h5>
+        </div>
+        <div class="col-9 border-left py-3">
+            <table class='col align-self-center'>
+              <% schedule[key].each_with_index do |pair, index|%>
+                    <tr>
+                        <td style="width: 3%"><%= index+1 %>:</td>
+                        <td><%= safe_join(pair.compact.map { |p| content_tag(:code, p&.humanize) }, ", ")%></td>
+                    </tr>
+              <%end%>
+            </table>
+        </div>
+      </div>
+  <% end %>
+</div>

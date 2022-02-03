@@ -1,0 +1,28 @@
+<div class="container">
+  <h1 class="text-info text-center">Schedule</h1>
+  <table class="table table-bordered">
+      <tbody>
+        <tr>
+            <th scope="row">DEVs</th>
+            <td><%= safe_join(@project.users.compact.map { |u| content_tag(:code, u&.humanize) }, ", ") %></td>
+        </tr>
+        <tr>
+            <th scope="row">Created At</th>
+            <td><%= @project.created_at.strftime("%F") %></td>
+        </tr>
+        <tr>
+            <th scope="row">Total Sprints</th>
+            <td><%= @project.sprints %></td>
+        </tr>
+      </tbody>
+  </table>
+    <%= render "schedule" , schedule: @schedule %>
+    <div class="digg_pagination my-5">
+        <%= will_paginate @schedule %>
+    </div>
+</div>
+
+
+
+
+

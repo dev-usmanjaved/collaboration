@@ -1,0 +1,30 @@
+<%= form_with(url: projects_path, local: true) do |f|%>
+  <div class="d-flex justify-content-between">
+      <h1 class=" mx-auto text-info" style="margin-vertical: 20px;">Get Schedule for your Project</h1>
+    </div>
+  <div class="container footer">
+    <div class="d-flex justify-content-between border" style="padding: 20px;">
+      <div class="p-1" data-controller="projects">
+        <p>Add Developer <a data-action="click->projects#addDev" href="javascript:;" id="addNewField" class="btn btn-outline-info">+</a></p>
+      </div>
+      <div class="p-1">
+        <div id="textField">
+          <%= label_tag 'Developer' %>
+          <%= text_field_tag 'users[]'  %>
+          <%= render partial: "developers" %>
+        </div>
+      </div>
+      <div class="p-1">
+        <label for="sprint">Number of Sprints</label>
+        <input id="sprint" name="sprints" type="number" placeholder="Enter number of sprints" required>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between">
+      <button type="submit" class="btn btn-info mx-auto" style="margin-top: 20px;">Submit</button>
+    </div>
+  </div>
+<% end %>
+
+<div class="d-none" id="new-developer">
+  <%= render partial: "developers", locals: {skill: false} %>
+</div>
