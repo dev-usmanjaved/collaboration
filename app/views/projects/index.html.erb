@@ -1,0 +1,10 @@
+<div class="container">
+<ul class="list-group" style="margin: 0px 100px 50px;">
+<% @projects.each do |project| %>
+<% schedule =  JSON.parse(project.schedule) %>
+  <h1 class="mx-auto text-secondary mt-5">Project with the ID: <%= project.id%></h1>
+  <%= render "schedule" , schedule: schedule %>
+<% end %>
+<div class="digg_pagination">
+  <%= will_paginate @projects %>
+</div>
